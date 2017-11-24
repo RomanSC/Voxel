@@ -14,14 +14,16 @@ namespace Main {
     public partial class Graph {
         public IDictionary<Tuple<int, int>, List<int>> grid = new Dictionary<Tuple<int, int>, List<int>>();
         public int size;
+        public int width;
+        public int height;
 
         // Constructor
         public Graph(int size) {
             this.grid = new Dictionary<Tuple<int, int>, List<int>>();
-            this.size = size;
+            this.size = size; this.width = this.size; this.height = this.size;
 
-            for (int y = 0; y < size; y++) {
-                for (int x = 0; x < size; x++) {
+            for (int y = 0; y < this.height; y++) {
+                for (int x = 0; x < this.width; x++) {
                     /* Console.WriteLine(string.Format("{0}, {1}", y, x)); */
                     /* grid.Add(y, "test"); */
                     Tuple<int, int> tup = new Tuple<int, int>(y, x);
@@ -41,8 +43,8 @@ namespace Main {
         public string getString() {
             string outstr = "{";
 
-            for (int y = 0; y < this.size; y++) {
-                for (int x = 0; x < this.size; x++) {
+            for (int y = 0; y < this.width; y++) {
+                for (int x = 0; x < this.height; x++) {
                     string outoutstr = "[";
 
                     // Lim to size of list contained in dictionary as values
@@ -60,12 +62,12 @@ namespace Main {
 
                     outstr = outstr + string.Format("({0}, {1}): {2}", y, x, outoutstr);
 
-                    if (x < (this.size - 1)) {
+                    if (x < (this.width - 1)) {
                         outstr = outstr + " ";
                     }
                 }
 
-                if (y < (this.size - 1)) {
+                if (y < (this.height - 1)) {
                     outstr = outstr + "\n";
                 }
             }
@@ -79,7 +81,7 @@ namespace Main {
         public Nullable<int> getZ(int y, int x) {
                 int? val;
 
-                if (y > this.size || x > this.size || y < 0 || x < 0) {
+                if (y > this.height || x > this.width || y < 0 || x < 0) {
                     val = null;
                 }
 
@@ -92,7 +94,7 @@ namespace Main {
         // Set value for z
         public void setZ(int y, int x, int val) {
                 // Out of bounds
-                if (y > this.size || x > this.size || y < 0 || x < 0) {
+                if (y > this.height || x > this.width || y < 0 || x < 0) {
                     return;
                 }
 
