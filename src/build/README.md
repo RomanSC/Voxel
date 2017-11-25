@@ -11,5 +11,5 @@ mcs -out:graph_test ../graph/graph.cs graph_test.cs
 
 ```
 cd ./tests
-mcs -out:map_test ../graph/graph.cs ../map/map
+mcs -out:terrain_gen_test ../graph/graph.cs ../terrain_gen/terrain_gen.cs
 ```
